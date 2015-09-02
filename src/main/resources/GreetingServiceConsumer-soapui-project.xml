@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="99a337e4-d679-4b0a-a1df-4842a20d04c4" activeEnvironment="Default" name="GreetingServiceConsumer" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1f648b63-75d6-41b7-ba12-bfd7eb1c2121" wsaVersion="NONE" name="GreetingServiceSoapBinding" type="wsdl" bindingName="{http://ws.demo.mule.com/}GreetingServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/greetingservice?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/greetingservice?wsdl"><con:part><con:url>http://localhost:8081/greetingservice?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GreetingService" targetNamespace="http://ws.demo.mule.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.demo.mule.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.demo.mule.com/">
+      <xsd:element name="sayHello" type="tns:sayHello"/>
+      <xsd:complexType name="sayHello">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+      <xsd:complexType name="sayHelloResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sayHello">
+    <wsdl:part element="tns:sayHello" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part element="tns:sayHelloResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GreetingServicePortType">
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="tns:sayHello" name="sayHello"></wsdl:input>
+      <wsdl:output message="tns:sayHelloResponse" name="sayHelloResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GreetingServiceSoapBinding" type="tns:GreetingServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="sayHello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHelloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GreetingService">
+    <wsdl:port binding="tns:GreetingServiceSoapBinding" name="GreetingServicePort">
+      <soap:address location="http://localhost:8081/greetingservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/greetingservice</con:endpoint></con:endpoints><con:operation id="92cb4b84-b5cb-4ba4-8c52-9fd2b78a1881" isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" outputName="sayHelloResponse" inputName="sayHello" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="37e16c56-6b9b-4175-86cf-a4deaa3cd6dd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/greetingservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.demo.mule.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:sayHello>
+         <!--Optional:-->
+         <ws:arg0>Roy</ws:arg0>
+      </ws:sayHello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.demo.mule.com/GreetingServicePortType/sayHello"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
